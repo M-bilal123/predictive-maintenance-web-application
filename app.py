@@ -1,7 +1,7 @@
 import streamlit as st
 import joblib
 
-rfc = joblib.load('E:\Depression dataset\Project\Predictive Miantenance_ML\predictive-maintenance-ML-main\model.joblib')
+rfc = joblib.load('model.joblib')
 
 st.title("Machine Predictive Maintenance Using Random Forest")
 
