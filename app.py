@@ -85,3 +85,5 @@ if st.button('Predict Failure'):
         st.error("Please ensure all inputs are valid numbers.")
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
+
+
