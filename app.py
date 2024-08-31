@@ -33,9 +33,9 @@ if st.button('Predict Failure'):
         process_temperature, rotational_speed, 
         torque, tool_wear
     ]
-failure_pred = rfc.predict([input_features])[0]
+   failure_pred = rfc.predict([input_features])[0]
     
-     failure_pred = 'Failure' if failure_pred == 1 else 'No Failure'
+   failure_pred = 'Failure' if failure_pred == 1 else 'No Failure'
     
  st.success(failure_pred)
 
