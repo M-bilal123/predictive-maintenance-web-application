@@ -26,7 +26,7 @@ with col_right:
 # Placeholder for prediction result
 failure_pred = ''
 
-Prediction button logic
+#Prediction button logic
 if st.button('Predict Failure'):
     input_features = [
         selected_type, air_temperature, 
