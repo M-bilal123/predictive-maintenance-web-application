@@ -1,6 +1,7 @@
-import streamlit as st
+mport streamlit as st
 import joblib
 
+# Load the model using a relative path
 rfc = joblib.load('model.joblib')
 
 st.title("Machine Predictive Maintenance Using Random Forest")
@@ -26,26 +27,25 @@ with col_right:
 # Placeholder for prediction result
 failure_pred = ''
 
-#Prediction button logic
 # Prediction button logic
 if st.button('Predict Failure'):
     try:
-        # Convert inputs to float, handling empty strings
-        process_temperature = float(process_temperature) if process_temperature else 0.0
-        torque = float(torque) if torque else 0.0
-        air_temperature = float(air_temperature) if air_temperature else 0.0
-        rotational_speed = float(rotational_speed) if rotational_speed else 0.0
-        tool_wear = float(tool_wear) if tool_wear else 0.0
-
+        # Convert inputs to float and handle potential ValueError
         input_features = [
-            selected_type, air_temperature, 
-            process_temperature, rotational_speed, 
-            torque, tool_wear
+            selected_type,
+            float(air_temperature),
+            float(process_temperature),
+            float(rotational_speed),
+            float(torque),
+            float(tool_wear)
         ]
         
-        # Make prediction
+        # Make the prediction
         failure_pred = rfc.predict([input_features])[0]
         failure_pred = 'Failure' if failure_pred == 1 else 'No Failure'
-        
-    except ValueError as e:
-        st.error(f"Invalid input: {e}")
+        st.success(failure_pred)
+    
+    except ValueError:
+        st.error("Please ensure all inputs are valid numbers.")
+    except Exception as e:
+        st.error(f"An error occurred: {str(e)}")
