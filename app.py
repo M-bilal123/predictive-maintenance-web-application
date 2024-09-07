@@ -1,4 +1,4 @@
-mport streamlit as st
+import streamlit as st
 import joblib
 
 # Load the model using a relative path
